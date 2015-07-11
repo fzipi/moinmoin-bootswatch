@@ -1,29 +1,30 @@
 # -*- coding: iso-8859-1 -*-
 """
-    MoinMoin - memodump theme
+    MoinMoin - bootswatch theme
 
     Based on modernized theme in MoinMoin
 
     Config variables:
         Following variables and methods in wikiconfig.py will change something in the theme.
 
-        memodump_menuoverride
+        bootswatch_menuoverride
             Overrides menu elements.
 
-        memodump_menu_def(request)
+        bootswatch_menu_def(request)
             Additional data dictionary of menu items.
 
-        memodump_hidelocation
+        bootswatch_hidelocation
             Overrides list of page names that should have no location area.
             e.g. [page_front_page, u'SideBar', ]
 
     References:
         How to edit menu items:
-            https://github.com/dossist/moinmoin-memodump/wiki/EditMenu
+            https://github.com/dossist/moinmoin-bootswatch/wiki/EditMenu
         Tips:
-            https://github.com/dossist/moinmoin-memodump/wiki/Tips
+            https://github.com/dossist/moinmoin-bootswatch/wiki/Tips
 
     @copyright: 2014 dossist.
+    @copyright: 2015 fzipi.
     @license: GNU GPL, see http://www.gnu.org/licenses/gpl for details.
 """
 
@@ -35,7 +36,7 @@ from MoinMoin.Page import Page
 
 class Theme(ThemeBase):
 
-    name = "memodump"
+    name = "bootswatch"
 
     _ = lambda x: x     # We don't have gettext at this moment, so we fake it
     icons = {
@@ -104,26 +105,67 @@ class Theme(ThemeBase):
 
     stylesheets = (
         # media         basename
-        ('all',         'bootstrap.min'),
-        ('all',         'bootstrap-theme.min'),
+        ('all',         'font-awesome.min'),
         ('all',         'memodump'),
         ('all',         'moinizer'),
     )
+
     stylesheets_print = (
-        ('all',         'bootstrap.min'),
-        ('all',         'bootstrap-theme.min'),
+        ('all',         'font-awesome.min'),
         ('all',         'memodump'),
         ('all',         'moinizer'),
         ('all',         'memoprint'),
     )
     stylesheets_projection = (
-        ('all',         'bootstrap.min'),
-        ('all',         'bootstrap-theme.min'),
+        ('all',         'font-awesome.min'),
         ('all',         'memodump'),
         ('all',         'moinizer'),
         ('all',         'memoslide'),
     )
 
+    def html_stylesheets(self, d):
+        """ Assemble html head stylesheet links
+
+        @param d: parameter dictionary
+        @rtype: string
+        @return: stylesheets links
+        """
+        request = self.request
+
+        """ Get bootswatch variant from wikiconfig.py """
+        try:
+            variant = request.cfg.bootswatch_variant
+        except AttributeError:
+            variant = 'default'
+
+        _bootswatch_css_name = 'bootstrap.' + variant + '.min'
+
+        # Check mode
+        if d.get('print_mode'):
+            media = d.get('media', 'print')
+            stylesheets = (('all', _bootswatch_css_name),) + getattr(self, 'stylesheets_' + media)
+        else:
+            stylesheets =  (('all', _bootswatch_css_name),) + self.stylesheets
+
+        theme_css = [self._stylesheet_link(True, *stylesheet) for stylesheet in stylesheets]
+        cfg_css = [self._stylesheet_link(False, *stylesheet) for stylesheet in request.cfg.stylesheets]
+
+        msie_css = """
+<!-- css only for MS IE6/IE7 browsers -->
+<!--[if lt IE 8]>
+   %s
+<![endif]-->
+""" % self._stylesheet_link(True, 'all', 'msie')
+
+        # Add user css url (assuming that user css uses same charset)
+        href = request.user.valid and request.user.css_url
+        if href and href.lower() != "none":
+            user_css = self._stylesheet_link(False, 'all', href)
+        else:
+            user_css = ''
+
+        return '\n'.join(theme_css + cfg_css + [msie_css, user_css])
+             
     def header(self, d, **kw):
         """ Assemble wiki header
         header1: supported.
