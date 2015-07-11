@@ -154,7 +154,7 @@ This theme is licensed under [GNU GPL][].
 [Twitter Bootstrap][] is copyrighted by Twitter, Inc and licensed under [the MIT license][MIT].  
 [MoinMoin][] is copyrighted by [The MoinMoin development team](https://moinmo.in/MoinCoreTeamGroup) and licensed under [GNU GPL][].  
 Icons and some part of CSS were taken from the default modernized theme.  
-[Bootswatch][] is copyrighted Thomas Park and licensed under [the MIT license][MIT]. Icons from [Font Awesome][http://fortawesome.github.io/Font-Awesome/]. Web fonts from [Google][http://www.google.com/webfonts].
+[Bootswatch][] is copyrighted Thomas Park and licensed under [the MIT license][MIT]. Icons from [Font Awesome][Font Awesome]. Web fonts from [Google][Google Wenfonts].
 
 
 
@@ -167,4 +167,5 @@ Icons and some part of CSS were taken from the default modernized theme.
 [Wiki Screenshots]: https://github.com/fzipi/moinmoin-bootswatch/wiki/Screenshots
 [GNU GPL]: http://www.gnu.org/licenses/gpl
 [MIT]: https://github.com/twbs/bootstrap/blob/master/LICENSE
-
+[Font Awesome]: http://fortawesome.github.io/Font-Awesome
+[Google Webfonts]: https://www.google.com/webfonts
