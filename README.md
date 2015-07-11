@@ -1,7 +1,8 @@
-moinmoin-memodump
-=================
+moinmoin-bootswatch
+===================
 
-A simple [MoinMoin][] theme based on [Twitter Bootstrap][].  
+bootswatch is a simple theme for [MoinMoin][https://moinmo.in/] 1.9 based on [memodump][https://github.com/dossist/moinmoin-memodump].
+
 Comes with responsive navbar and sidebar.
 
 You can create your own sidebar by creating a page called `SideBar`.
@@ -14,7 +15,7 @@ For details, please refer to [the project wiki][Wiki Home].
 Screenshot
 ----------
 
-![Main](https://github.com/dossist/moinmoin-memodump/wiki/memodump.png)
+![Main](https://github.com/fzipi/moinmoin-bootswatch/wiki/Cerulean.png)
 
 [More][Wiki Screenshots]
 
