@@ -26,10 +26,10 @@ Install
    To clone:
 
     ```console
-    $ git clone https://github.com/dossist/moinmoin-memodump.git
+    $ git clone https://github.com/fzipi/moinmoin-bootswatch.git
     ```
 
-2. Copy `memodump.py` into plugin directory `data/plugin/theme/`.
+2. Copy `bootswatch.py` into plugin directory `data/plugin/theme/`.
    Location of the directory varies according to how you installed MoinMoin.
 
 3. Copy directory `memodump` into static files directory `MoinMoin/web/static/htdocs/`.
@@ -64,12 +64,19 @@ There are two ways to apply the theme.
 Edit `wikiconfig.py` to change `theme_default`.
 
 ```python
-    theme_default = 'memodump'
+    theme_default = 'bootswatch'
 ```
 
 Please note that indentations are important in python codes, and here you must
 indent the line by exactly 4 spaces.
 
+### Theme variants ###
+
+Edit `wikiconfig.py` and select some of the bootswatch posible variantsi. For example, to select `cerulean`:
+
+```python
+    bootswatch_variant = 'cerulean'
+```
 
 Customization
 -------------
@@ -106,7 +113,7 @@ You can define a list of pages which comes without the info.
 Define a list `memodump_hidelocation` in `wikiconfig.py`. The list has page names as its entries.  
 Example:
 
-        memodump_hidelocation = [page_front_page, u'SideBar', ]
+        bootswatch_hidelocation = [page_front_page, u'SideBar', ]
 
 By default, `page_front_page` is the only page in the list.
 
@@ -115,10 +122,10 @@ By default, `page_front_page` is the only page in the list.
 
 Basic knowledge of python language is required!
 
-By defining `memodump_menuoverride` in `wikiconfig.py`, you can override menu entries.  
+By defining `bootswatch_menuoverride` in `wikiconfig.py`, you can override menu entries.  
 Example:
 
-        memodump_menuoverride = [
+        bootswatch_menuoverride = [
             'raw',
             'print',
         ]
@@ -141,6 +148,7 @@ License and copyrights
 ----------------------
 
 Copyright 2014 dossist.  
+Copyright 2015 fzipi.  
 This theme is licensed under [GNU GPL][].  
 [Twitter Bootstrap][] is copyrighted by Twitter, Inc and licensed under [the MIT license][MIT].  
 [MoinMoin][] is copyrighted by [The MoinMoin development team](https://moinmo.in/MoinCoreTeamGroup) and licensed under [GNU GPL][].  
@@ -150,9 +158,10 @@ Icons and some part of CSS were taken from the default modernized theme.
 
 [MoinMoin]: https://moinmo.in/
 [Twitter Bootstrap]: http://getbootstrap.com/
-[Wiki Home]: https://github.com/dossist/moinmoin-memodump/wiki
-[Wiki EditMenu]: https://github.com/dossist/moinmoin-memodump/wiki/EditMenu
-[Wiki Translation]: https://github.com/dossist/moinmoin-memodump/wiki/Translation
-[Wiki Screenshots]: https://github.com/dossist/moinmoin-memodump/wiki/Screenshots
+[Bootswatch]: http://bootswatch.com/
+[Wiki Home]: https://github.com/fzipi/moinmoin-bootswatch/wiki
+[Wiki EditMenu]: https://github.com/fzipi/moinmoin-bootswatch/wiki/EditMenu
+[Wiki Translation]: https://github.com/fzipi/moinmoin-bootswatch/wiki/Translation
+[Wiki Screenshots]: https://github.com/fzipi/moinmoin-bootswatch/wiki/Screenshots
 [GNU GPL]: http://www.gnu.org/licenses/gpl
 [MIT]: https://github.com/twbs/bootstrap/blob/master/LICENSE
